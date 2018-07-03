@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Home</title>
+	<link rel="stylesheet" href="mywebsite.css">
+	
+	<script>
+	var randomQuotePicker;
+	var quote;
+	var NumOfParaField;
+	var NumOfQuoteField;
+	var defaultVal = 3;
+	var singleQuoteField;
+	
+	var QuoteList = new Array()
+	QuoteList[0] = "THREE!?",
+	QuoteList[1] = "We still have an hour left in this class."
+	QuoteList[2] = "Programming!? I'm triggered."
+	QuoteList[3] = "Is this all we're doing today, Stephen?"
+	QuoteList[4] = "I store my contacts on my SIM card."
+	QuoteList[5] = "Do you want my final website in PDF?"
+	QuoteList[6] = "I'm pretty sure that test physically hurt me."
+	QuoteList[7] = "Oh god, please no; why!?"
+	QuoteList[8] = "He told me <q>that's a you problem</q>."
+	QuoteList[9] = "Trentabits."
+	QuoteList[10] = "I'm having ghost numbers."
+	QuoteList[11] = "Can you please control your Thomas."
+	QuoteList[12] = "Do you want to come and hang out with me and my highscool friends?"
+	QuoteList[13] = "I don't even know how to program."
+	QuoteList[14] = "The other class is doing the My Perfect PC assignment; why can't we?"
+	QuoteList[15] = "He's just trying to get into our heads."
+	QuoteList[16] = "Add me on Facebook or else we can't be friends."
+	QuoteList[17] = "I donate blood every month."
+	QuoteList[18] = "I have a body pillow of Sakura."
+	QuoteList[19] = "Cory in the House is my favorite anime."
+	QuoteList[20] = "No, that's a picture of me in Greece."
+	QuoteList[21] = "Jeff, do you want to drive me to pick up my weight set?"
+	QuoteList[22] = "I wanna be the Jeff in Database."
+	QuoteList[23] = "Programming is the worst thing that ever happened to me."
+	QuoteList[24] = "Programming is dunking on my GPA."
+	QuoteList[25] = "I'm having programming flashbacks from Vietnam."
+	QuoteList[26] = "Stephen thinks I'm funny."
+	QuoteList[27] = "I bring joy and enlightenment in Stephen's classroom."
+	QuoteList[28] = "If there's anything that could go wrong in networking, it's part of the lab."
+	QuoteList[29] = "Why does Stephen never snap me back? Does he snap you back?."
+	
+function disableBtn() {
+    document.getElementById("SiteDesc").style.visibility = "hidden";
+}
+
+function undisableBtn() {
+    document.getElementById("SiteDesc").style.visibility = "visible";
+}
+
+function displayInfo()
+{
+	document.getElementById("DisplayIndfo").innerHTML = "Looking to generate some Lorem Ipsum text in the form of a famous Ryan Lockett quote? " +
+	"Well you've come to the right place! Use the selection menu to the left " +
+	"to format and generate the text. If you get lost, you can always get this site description back by pressing the button that will appear once this text is gone! ";
+}
+
+function displayQuoteParagraph()
+{
+	var pTag;
+	NumOfQuoteField = document.getElementsByName('NumOfQuotes')[0].value;
+	NumOfParaField = document.getElementsByName('NumOfPara')[0].value;
+	quote = "";
+	pTag = document.getElementsByName('daBox')[0].checked;
+	if(NumOfQuoteField > 0 && NumOfQuoteField <= 20 && NumOfParaField > 0 && NumOfParaField <= 20)
+	{
+		if(pTag)
+		{
+			quote += "&lt;p&gt; ";
+		}
+		
+		for(j = 0; j < NumOfParaField; j++)
+		{
+			for(i = 0; i < NumOfQuoteField; i++)
+			{
+				randomQuotePicker = Math.floor((Math.random() * 30) + 1);
+				quote += QuoteList[randomQuotePicker - 1] + ' ';
+			}
+			quote += '<br>' + '<br>';
+		}
+		if(pTag)
+		{
+			quote += "&lt;/p&gt; ";
+		}
+		document.getElementById("DisplayIndfo").innerHTML = quote;
+	}
+	else
+	{
+		if(!(NumOfQuoteField > 0 && NumOfQuoteField <= 20))
+		{
+			document.getElementsByName('NumOfQuotes')[0].value = defaultVal;
+		}
+		if(!(NumOfParaField > 0 && NumOfParaField <= 20))
+		{
+			document.getElementsByName('NumOfPara')[0].value = defaultVal;
+		}
+		displayQuoteParagraph();
+	}
+}
+
+function displaySingleQuote()
+{
+	var pTag;
+	quote = "";
+	pTag = document.getElementsByName('ptag2')[0].checked;
+	singleQuoteField = document.getElementsByName('QuoteNumber')[0].value;
+	
+	if(singleQuoteField > 0 && singleQuoteField <= 30)
+	{
+		if(pTag)
+		{
+			quote += "&lt;p&gt; ";
+		}
+		quote +=  QuoteList[singleQuoteField-1];
+		if(pTag)
+		{
+			quote += " &lt;/p&gt;";
+		}
+		document.getElementById("DisplayIndfo").innerHTML = quote;
+	}
+	else
+	{	
+		if(pTag)
+		{
+			quote += "&lt;p&gt; ";
+		}
+		randomQuotePicker = Math.floor((Math.random() * 30) + 1);
+		quote +=  QuoteList[randomQuotePicker-1];
+		if(pTag)
+		{
+			quote += " &lt;/p&gt;";
+		}
+		document.getElementById("DisplayIndfo").innerHTML = quote;
+		document.getElementsByName('QuoteNumber')[0].value = "";
+	}
+	
+	if(pTag)
+		{
+			quote += "&lt;/p&gt; ";
+		}
+}
+</script>
+
+</head>
+
+<body onload="disableBtn()">
+
+<div class="wrapper">
+<!--Change this stuff for the other pages -->
+<header>
+	<a href="index.html"><img src="Images/r-logo.png" width="140px" height="140px" class="headerBG"></a>
+	<img src="Images/TitleCard.png" width="288px" height="122px" class="headerBG" style="margin-left: 1%;">
+</header>
+<br clear="both">
+<div class="divNav">
+	<center>
+
+	<div class="tabs">
+    <ul class="tab-links">      
+        <li><a href="quotes.html">Quote List</a></li>
+		<li class="active"><a href="index.html">Home</a></li>
+    </ul>
+ 
+
+
+    </div>
+</div>
+	</center>
+<div class="divBody">
+<div class="divLeft">
+</div>
+<div class="divQuotesSelection">
+<h1>Generate Quotes!</h1>
+
+
+<hr color="#5271B2">
+<h1 style="text-align: left; margin-left: 2%;" >Paragraph?</h1>
+
+<div>
+<p style="text-align: left; font-size: 18px; padding-left: 10%; width: 50%; float: left;">Number of paragraphs?</p> 
+<form style="padding-top: 3%; padding-right: 10%;">
+  <input type="text" name="NumOfPara" value="3" style="width: 30px; height: 30px; float: right; font-size: 25px;">
+</form> 
+</div>
+
+
+<br clear="both">
+
+<div>
+<p style="text-align: left; font-size: 18px; padding-left: 10%; width: 50%; float: left;">Number of quotes per paragraph?</p> 
+<form style="padding-top: 3%;  padding-right: 10%;">
+  <input type="text" name="NumOfQuotes" value="3" style="width: 30px; height: 30px; float: right; font-size: 25px;">
+</form> 
+</div>
+
+<br clear="both">
+
+<div>
+<p style="text-align: left; font-size: 18px; padding-left: 10%; width: 50%; float: left;">Include &lt;p&gt; tag? </p>
+<form style="padding-top: 3%;  padding-right: 10%;">
+	<input type="checkbox" name="daBox" style="float: right;">
+</form>
+</div>
+
+<br clear="both">
+<center>
+<button type="button" style="width: 45%; font-size: 16px;" onclick="displayQuoteParagraph(); undisableBtn()">Generate Paragraph</button>
+</center>
+<br>
+
+<hr color="#5271B2">
+
+<h1 style="text-align: left; margin-left:2%;" >Single Quote?</h1>
+<div>
+<p style="text-align: left; font-size: 18px; padding-left: 10%; width: 50%; float: left;">Quote number <br>(the quote will be random if left blank)</p> 
+<form style="padding-top: 3%;  padding-right: 10%;">
+  <input type="text" name="QuoteNumber" value="3" style="width: 30px; height: 30px; float: right; font-size:25px;">
+</form> 
+</div>
+
+<br clear="both">
+
+<div>
+<p style="text-align: left; font-size: 18px; padding-left: 10%; width: 50%; float: left;">Include &lt;p&gt; tag? </p>
+<form style="padding-top: 3%;  padding-right: 10%;">
+	<input type="checkbox" name="ptag2" style="float: right;">
+</form>
+</div>
+<br clear="both">
+<center>
+<button type="button" style="width: 45%; font-size: 16px;" name ="SingleQuote" onclick="displaySingleQuote(); undisableBtn()">Generate Single Quote</button>
+</center>
+<br>
+</div>
+
+<div class="divRight">
+</div>
+<div class="rightText">
+<div style="width: 20%; float: left; margin-left: 3%; margin-top: 3%;"><button type="button" id="SiteDesc" style="width: 100%;"  onclick ="displayInfo(); disableBtn()">Site Description</button></div>
+<div style="width: 55%;float: left;"><h1>Quote</h1></div>
+<br clear="both">
+<hr color="#5271B2">
+<p id="DisplayIndfo">Looking to generate some Lorem Ipsum text in the form of a famous Ryan Lockett quote? Well you've come to the right place! Use the selection menu to the left
+	to format and generate the text. If you get lost, you can always get this site desctiption back by pressing the button above! 
+	</p>
+	<hr color="#5271B2">
+</div>
+</div>
+</div>
+</body>
+</html>
